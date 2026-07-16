@@ -48,7 +48,7 @@ Secure a Software Development Internship within the next 8–10 months.
 
 **Name:** Priya Singh
 
-**Age:** 21
+**Age:** 22
 
 **Year:** 3rd Year B.Tech CSE
 
