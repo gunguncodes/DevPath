@@ -7,6 +7,8 @@ function MissionCard() {
 
       <p>Estimated Time: 45 min</p>
 
+      <p>Complete this mission to move one step closer to your goal.</p>
+
       <button>Start Today's Mission</button>
     </div>
   );
