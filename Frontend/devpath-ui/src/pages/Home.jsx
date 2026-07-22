@@ -1,7 +1,7 @@
-import Greeting from "../components/Greeting";
-import MissionCard from "../components/MissionCard";
-import ProgressCard from "../components/ProgressCard";
-import NextMilestone from "../components/NextMilestone";
+import Greeting from "../components/home/Greeting";
+import MissionCard from "../components/home/MissionCard";
+import ProgressCard from "../components/home/ProgressCard";
+import NextMilestone from "../components/home/NextMilestone";
 import MainLayout from "../layouts/MainLayout";
 
 function Home() {

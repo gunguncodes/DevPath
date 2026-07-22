@@ -1,6 +1,9 @@
+import Card from "../common/Card";
+import Button from "../common/Button";
+
 function MissionCard() {
   return (
-    <section className="bg-white rounded-4xl p-10 shadow-sm border border-slate-200">
+    <Card className="p-10">
       <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
         One Step Today
       </p>
@@ -37,10 +40,10 @@ function MissionCard() {
         </div>
       </div>
 
-      <button className="mt-10 w-full bg-slate-900 text-white text-lg py-5 rounded-2xl font-semibold hover:bg-slate-800 transition">
+      <Button>
         Start Today's Mission
-      </button>
-    </section>
+      </Button>
+    </Card>
   );
 }
 
