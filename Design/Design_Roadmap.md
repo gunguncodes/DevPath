@@ -28,3 +28,22 @@ Frontend
 
 ## Phase 5
 Backend
+
+
+## Phase 1: Frontend MVP
+Home
+Journey
+Roadmap
+Profile
+
+## Phase 2: Backend
+Authentication
+User profile
+Progress storage
+Mission storage
+
+## Phase 3: AI
+Personalized roadmap
+Mission generation
+Explanations ("Why this?")
+Progress recommendations

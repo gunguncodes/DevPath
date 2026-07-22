@@ -1,19 +1,7 @@
-import "./App.css";
-import Greeting from "./components/Greeting";
-import MissionCard from "./components/MissionCard";
-import JourneyPreview from "./components/JourneyPreview";
-import NextMilestone from "./components/NextMilestone";
+import Home from "./pages/Home";
 
 function App() {
-  return (
-    <div>
-      <h1 className="text-5xl text-blue-600 font-bold">DevPath</h1>
-      <Greeting />
-      <MissionCard />
-      <JourneyPreview />
-      <NextMilestone />
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;
