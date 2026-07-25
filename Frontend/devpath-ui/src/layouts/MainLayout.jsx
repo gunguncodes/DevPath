@@ -5,8 +5,7 @@ function MainLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-slate-100">
-
+    <div className="relative min-h-screen bg-slate-100 flex">
       <Sidebar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
@@ -19,10 +18,9 @@ function MainLayout({ children }) {
         />
       )}
 
-      <main className="min-h-screen pl-20 p-10">
+      <main className="flex-1 min-w-0 pt-24 px-10">
         {children}
       </main>
-
     </div>
   );
 }

@@ -34,8 +34,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   return (
     <>
       {/* Icon Rail */}
-      <aside className="fixed left-0 top-0 z-50 h-screen w-20 bg-white border-r border-slate-200 flex flex-col">
-
+      {/* Icon Rail */}
+<aside className="sticky top-0 z-50 h-screen w-20 shrink-0 bg-white border-r border-slate-200 flex flex-col">
         <div className="flex flex-col items-center pt-5 pb-6 border-b border-slate-200">
 
           <button
@@ -110,7 +110,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
         `}
       >
 
-        <div className="flex items-center gap-5 p-7 border-b border-slate-200">
+        <div className="flex items-center gap-y p-7 border-b border-slate-200">
 
           <button
             onClick={() => setSidebarOpen(false)}
