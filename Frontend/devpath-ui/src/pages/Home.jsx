@@ -3,15 +3,29 @@ import MissionCard from "../components/home/MissionCard";
 import ProgressCard from "../components/home/ProgressCard";
 import NextMilestone from "../components/home/NextMilestone";
 import MainLayout from "../layouts/MainLayout";
+import { roadmap } from "../data/roadmap";
 
 function Home() {
+  const currentMilestone = roadmap.find(
+    (milestone) => milestone.status === "current"
+  );
+
+  const currentLesson = currentMilestone?.lessons.find(
+    (lesson) => lesson.status === "current"
+  );
+
   return (
     <MainLayout>
       <Greeting />
 
-      <section className="grid grid-cols-3 gap-6 mt-10">
-        <div className="col-span-2">
-          <MissionCard />
+      <section className="mt-10 grid gap-6 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          {currentMilestone && currentLesson && (
+            <MissionCard
+              milestone={currentMilestone}
+              lesson={currentLesson}
+            />
+          )}
         </div>
 
         <div>

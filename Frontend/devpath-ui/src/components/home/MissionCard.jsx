@@ -1,48 +1,54 @@
+import { useNavigate } from "react-router-dom";
 import Card from "../common/Card";
 import Button from "../common/Button";
 
-function MissionCard() {
+function MissionCard({ milestone, lesson }) {
+  const navigate = useNavigate();
   return (
-    <Card className="p-10">
-      <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
-        One Step Today
+    <Card className="p-8 sm:p-10">
+      <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+        Current lesson
       </p>
 
-      <h2 className="text-3xl font-bold text-slate-900 mt-3 leading-tight">
-        Build your first React Component
+      <h2 className="mt-3 text-3xl font-bold leading-tight text-slate-900">
+        Learn {lesson.title}
       </h2>
 
-      <p className="text-slate-600 mt-5 text-lg">
-        Today's goal isn't to finish React.
-        It's to understand reusable components.
+      <p className="mt-2 text-sm font-medium text-slate-500">
+        {milestone.title}
+      </p>
+
+      <p className="mt-5 text-lg text-slate-600">
+        {lesson.summary}
       </p>
 
       <div className="mt-8 space-y-6">
         <div>
           <p className="text-sm font-medium text-slate-500">
-            Estimated Time
+            Estimated time
           </p>
 
           <p className="text-xl font-semibold text-slate-900">
-            45 Minutes
+            {lesson.duration}
           </p>
         </div>
 
         <div>
           <p className="text-sm font-medium text-slate-500">
-            Why This?
+            Why this matters
           </p>
 
-          <p className="text-slate-700 leading-7">
-            Components are the foundation of React.
-            Once you understand them, every future topic becomes easier.
+          <p className="leading-7 text-slate-700">
+            {lesson.reason}
           </p>
         </div>
       </div>
 
-      <Button>
-        Start Today's Mission
-      </Button>
+      <div className="mt-8">
+        <Button onClick={() => navigate(`/lessons/${lesson.id}`)}>
+          Start {lesson.title}
+        </Button>
+      </div>
     </Card>
   );
 }

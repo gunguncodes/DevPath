@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Home from "./pages/Home";
 import Journey from "./pages/Journey";
+import Lesson from "./pages/Lesson";
 import Roadmap from "./pages/Roadmap";
 import Profile from "./pages/Profile";
 
@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/journey" element={<Journey />} />
+        <Route path="/lessons/:lessonId" element={<Lesson />} />
         <Route path="/roadmap" element={<Roadmap />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>

@@ -29,7 +29,32 @@ export const roadmap = [
     lessons: [
       { id: "components", title: "Components", status: "completed" },
       { id: "props", title: "Props", status: "completed" },
-      { id: "use-state", title: "useState", status: "current" },
+      {
+           id: "use-state",
+           title: "useState",
+           status: "current",
+           duration: "30 minutes",
+           summary: "Learn how React components remember and update information.",
+           reason:
+           "State is what makes a React interface interactive. You will use it in forms, counters, filters, and many real projects.",
+           steps: [
+        {
+           title: "Create state",
+           description:
+           "Import useState and create a count value that starts at zero.",
+        },
+        {
+           title: "Display the value",
+           description:
+           "Render the count inside your component so the user can see it.",
+        },
+        {
+            title: "Update state",
+            description:
+            "Add a button that increases the count when the user clicks it.",
+        },
+        ],
+      },
       { id: "use-effect", title: "useEffect", status: "locked" },
     ],
   },

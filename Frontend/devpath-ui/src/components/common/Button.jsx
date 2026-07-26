@@ -1,13 +1,15 @@
-function Button({ children }) {
+function Button({ children, onClick, type = "button" }) {
   return (
     <button
+      type={type}
+      onClick={onClick}
       className="
         w-full
-        bg-slate-900
-        text-white
-        py-4
         rounded-2xl
+        bg-slate-900
+        py-4
         font-semibold
+        text-white
         transition
         hover:bg-slate-800
       "
