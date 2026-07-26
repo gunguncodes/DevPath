@@ -1,9 +1,9 @@
 import { FiArrowLeft, FiClock, FiCheckCircle } from "react-icons/fi";
 import { Link, useParams } from "react-router-dom";
+import Button from "../components/common/Button";
 import MainLayout from "../layouts/MainLayout";
-import { roadmap } from "../data/roadmap";
 
-export default function Lesson() {
+export default function Lesson({ roadmap, onLessonComplete }) {
   const { lessonId } = useParams();
 
   const milestone = roadmap.find((roadmapMilestone) =>
@@ -32,6 +32,35 @@ export default function Lesson() {
       </MainLayout>
     );
   }
+
+  if (lesson.status === "locked") {
+    return (
+      <MainLayout>
+        <div className="mx-auto max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-widest text-slate-500">
+            Lesson locked
+          </p>
+
+          <h1 className="mt-3 text-3xl font-bold text-slate-900">
+            Complete earlier lessons first.
+          </h1>
+
+          <p className="mt-3 text-slate-600">
+            {lesson.title} will unlock when you reach it in your learning path.
+          </p>
+
+          <Link
+            to="/journey"
+            className="mt-6 inline-block font-semibold text-indigo-600 hover:text-indigo-700"
+          >
+            Return to your journey
+          </Link>
+        </div>
+      </MainLayout>
+    );
+  }
+
+  const isCurrentLesson = lesson.status === "current";
 
   return (
     <MainLayout>
@@ -65,7 +94,7 @@ export default function Lesson() {
             </h2>
 
             <div className="mt-6 space-y-5">
-              {lesson.steps?.map((step, index) => (
+              {lesson.steps.map((step, index) => (
                 <div key={step.title} className="flex gap-4">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-bold text-indigo-700">
                     {index + 1}
@@ -106,6 +135,40 @@ export default function Lesson() {
               </p>
             </div>
           </aside>
+        </section>
+
+        <section className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          {isCurrentLesson ? (
+            <>
+              <h2 className="text-xl font-bold text-slate-900">
+                Ready to move on?
+              </h2>
+
+              <p className="mt-2 text-slate-600">
+                Mark this lesson complete when you have finished the checklist.
+              </p>
+
+              <div className="mt-6">
+                <Button onClick={() => onLessonComplete(lesson.id)}>
+                  Mark lesson complete
+                </Button>
+              </div>
+            </>
+          ) : (
+            <div className="flex items-center gap-3">
+              <FiCheckCircle size={22} className="text-emerald-600" />
+
+              <div>
+                <h2 className="font-semibold text-slate-900">
+                  Lesson completed
+                </h2>
+
+                <p className="mt-1 text-sm text-slate-600">
+                  Your learning path has been updated.
+                </p>
+              </div>
+            </div>
+          )}
         </section>
       </div>
     </MainLayout>

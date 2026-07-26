@@ -23,7 +23,7 @@ function getJourneyProgress(milestones) {
   };
 }
 
-export default function Journey() {
+export default function Journey({roadmap}) {
   const progress = getJourneyProgress(roadmap);
 
   const currentMilestone = roadmap.find(

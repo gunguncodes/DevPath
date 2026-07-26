@@ -3,9 +3,8 @@ import MissionCard from "../components/home/MissionCard";
 import ProgressCard from "../components/home/ProgressCard";
 import NextMilestone from "../components/home/NextMilestone";
 import MainLayout from "../layouts/MainLayout";
-import { roadmap } from "../data/roadmap";
 
-function Home() {
+function Home({roadmap}) {
   const currentMilestone = roadmap.find(
     (milestone) => milestone.status === "current"
   );
