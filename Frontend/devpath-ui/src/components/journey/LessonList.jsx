@@ -1,4 +1,5 @@
 import { FiCheck, FiLock, FiPlay } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 function getLessonStyles(status) {
   if (status === "completed") {
@@ -32,9 +33,13 @@ export default function LessonList({ lessons }) {
     <ul className="mt-4 space-y-3 border-t border-slate-100 pt-4">
       {lessons.map((lesson) => {
         const lessonStyles = getLessonStyles(lesson.status);
+        const isCurrent = lesson.status === "current";
 
         return (
-          <li key={lesson.id} className="flex items-center justify-between gap-4">
+          <li
+            key={lesson.id}
+            className="flex items-center justify-between gap-4"
+          >
             <div className="flex items-center gap-3">
               <span
                 className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${lessonStyles.iconClassName}`}
@@ -47,9 +52,18 @@ export default function LessonList({ lessons }) {
               </span>
             </div>
 
-            <span className="text-xs font-medium text-slate-500">
-              {lessonStyles.label}
-            </span>
+            {isCurrent ? (
+              <Link
+                to={`/lessons/${lesson.id}`}
+                className="text-xs font-semibold text-indigo-600 hover:text-indigo-700"
+              >
+                {lessonStyles.label}
+              </Link>
+            ) : (
+              <span className="text-xs font-medium text-slate-500">
+                {lessonStyles.label}
+              </span>
+            )}
           </li>
         );
       })}
