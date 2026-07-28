@@ -47,7 +47,7 @@ function App() {
           }
         />
 
-        <Route path="/roadmap" element={<Roadmap />} />
+        <Route path="/roadmap" element={<Roadmap roadmap={learningPath} />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
