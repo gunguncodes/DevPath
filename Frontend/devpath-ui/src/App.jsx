@@ -27,6 +27,10 @@ function App() {
     );
   }
 
+  function handleResetProgress() {
+    setLearningPath(roadmap);
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -48,7 +52,9 @@ function App() {
         />
 
         <Route path="/roadmap" element={<Roadmap roadmap={learningPath} />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile roadmap={learningPath} onResetProgress={handleResetProgress} />
+  }
+/>
       </Routes>
     </BrowserRouter>
   );
