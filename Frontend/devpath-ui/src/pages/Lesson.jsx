@@ -61,6 +61,7 @@ export default function Lesson({ roadmap, onLessonComplete }) {
   }
 
   const isCurrentLesson = lesson.status === "current";
+  const lessonSteps = lesson.steps ?? [];
 
   return (
     <MainLayout>
@@ -94,7 +95,8 @@ export default function Lesson({ roadmap, onLessonComplete }) {
             </h2>
 
             <div className="mt-6 space-y-5">
-              {lesson.steps.map((step, index) => (
+              {lessonSteps.length > 0 ? (
+              lessonSteps.map((step, index) => (
                 <div key={step.title} className="flex gap-4">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-bold text-indigo-700">
                     {index + 1}
@@ -110,7 +112,12 @@ export default function Lesson({ roadmap, onLessonComplete }) {
                     </p>
                   </div>
                 </div>
-              ))}
+              ))
+              ) : (
+              <p className="text-slate-600">
+                Lesson content will be added soon.
+              </p>
+             )}
             </div>
           </div>
 

@@ -95,15 +95,45 @@ export const roadmap = [
   },
 
   {
-    id: "react-router",
-    title: "React Router",
-    description: "Add navigation between pages in your app.",
-    status: "locked",
-    lessons: [
-      { id: "routes", title: "Basic Routes", status: "locked" },
-      { id: "route-params", title: "Route Parameters", status: "locked" },
-    ],
-  },
+  id: "react-router",
+  title: "React Router",
+  description: "Add navigation between pages in your app.",
+  status: "locked",
+  lessons: [
+    {
+      id: "routes",
+      title: "Basic Routes",
+      status: "locked",
+      duration: "30 minutes",
+      summary:
+        "Learn how React Router displays a different page for each URL.",
+      reason:
+        "Routing turns a single React screen into a real multi-page application.",
+      steps: [
+        {
+          title: "Create two pages",
+          description:
+            "Create simple Home and About page components.",
+        },
+        {
+          title: "Define routes",
+          description:
+            "Use Route components to connect each URL to a page.",
+        },
+        {
+          title: "Add navigation",
+          description:
+            "Use Link components so users can move between pages without a full reload.",
+        },
+      ],
+    },
+    {
+      id: "route-params",
+      title: "Route Parameters",
+      status: "locked",
+    },
+  ],
+},
   {
     id: "state-management",
     title: "State Management",
@@ -113,5 +143,5 @@ export const roadmap = [
       { id: "context-api", title: "Context API", status: "locked" },
       { id: "global-state", title: "Global State Patterns", status: "locked" },
     ],
-  },
+  }
 ];
