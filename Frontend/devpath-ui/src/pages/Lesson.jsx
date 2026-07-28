@@ -2,6 +2,7 @@ import { FiArrowLeft, FiClock, FiCheckCircle } from "react-icons/fi";
 import { Link, useParams } from "react-router-dom";
 import Button from "../components/common/Button";
 import MainLayout from "../layouts/MainLayout";
+import CodeExample from "../components/journey/CodeExample";
 
 export default function Lesson({ roadmap, onLessonComplete }) {
   const { lessonId } = useParams();
@@ -87,6 +88,29 @@ export default function Lesson({ roadmap, onLessonComplete }) {
             {lesson.summary}
           </p>
         </header>
+
+        {lesson.codeExample && (
+        <CodeExample
+          title={lesson.codeExample.title}
+          code={lesson.codeExample.code}
+        />
+        )}
+
+        {lesson.practiceTask && (
+        <section className="mt-6 rounded-2xl border border-indigo-200 bg-indigo-50 p-6">
+          <p className="text-sm font-semibold uppercase tracking-wide text-indigo-700">
+            Practice task
+          </p>
+
+          <h2 className="mt-3 text-xl font-bold text-slate-900">
+            Build it yourself
+          </h2>
+
+          <p className="mt-3 leading-7 text-slate-700">
+            {lesson.practiceTask}
+          </p>
+        </section>
+        )}
 
         <section className="mt-8 grid gap-6 md:grid-cols-3">
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:col-span-2">
