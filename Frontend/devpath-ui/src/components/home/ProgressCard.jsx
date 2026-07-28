@@ -2,48 +2,43 @@ import Card from "../common/Card";
 import Badge from "../common/Badge";
 import ProgressBar from "../common/ProgressBar";
 
-function ProgressCard() {
+function ProgressCard({
+  currentMilestone,
+  completedLessons,
+  totalLessons,
+  percentage,
+}) {
   return (
     <Card>
-      <p className="text-sm font-semibold text-indigo-600 uppercase tracking-wide">
-        Where You Are Today
+      <p className="text-sm font-semibold uppercase tracking-wide text-indigo-600">
+        Your progress
       </p>
 
-      <div className="mt-6 space-y-5">
+      <div className="mt-6 space-y-6">
         <div>
-          <p className="text-sm text-slate-500 mb-2">
-            Current Role
-          </p>
+          <p className="mb-2 text-sm text-slate-500">Current focus</p>
 
-          <Badge>Explorer</Badge>
+          <Badge>
+            {currentMilestone?.title ?? "Learning path complete"}
+          </Badge>
         </div>
 
         <div>
-          <p className="text-sm text-slate-500 mb-2">
-            Current Focus
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-sm text-slate-500">Lessons completed</p>
+
+            <p className="text-sm font-semibold text-slate-900">
+              {completedLessons} of {totalLessons}
+            </p>
+          </div>
+
+          <div className="mt-3">
+            <ProgressBar progress={percentage} />
+          </div>
+
+          <p className="mt-3 text-sm text-slate-600">
+            You&apos;re {percentage}% through your learning path.
           </p>
-
-          <Badge>HTML & CSS</Badge>
-        </div>
-
-        <div>
-          <p className="text-sm text-slate-500 mb-2">
-            Progress
-          </p>
-
-          <ProgressBar progress={33} />
-
-          <p className="text-sm mt-2 text-slate-600">
-            You're 33% closer to your goal.
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm text-slate-500 mb-2">
-            Next Milestone
-          </p>
-
-          <Badge>React Fundamentals</Badge>
         </div>
       </div>
     </Card>

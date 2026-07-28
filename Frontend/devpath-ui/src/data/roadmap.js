@@ -128,10 +128,32 @@ export const roadmap = [
       ],
     },
     {
-      id: "route-params",
-      title: "Route Parameters",
-      status: "locked",
+  id: "route-params",
+  title: "Route Parameters",
+  status: "locked",
+  duration: "25 minutes",
+  summary:
+    "Learn how to read values from a URL, such as a lesson ID or user ID.",
+  reason:
+    "Route parameters let one reusable page display different content based on the URL.",
+  steps: [
+    {
+      title: "Create a dynamic route",
+      description:
+        "Add a route such as /lessons/:lessonId, where lessonId changes.",
     },
+    {
+      title: "Read the parameter",
+      description:
+        "Use useParams to access the lesson ID inside the page component.",
+    },
+    {
+      title: "Show matching content",
+      description:
+        "Find the lesson with that ID and display its title and details.",
+    },
+  ],
+},
   ],
 },
   {
@@ -140,8 +162,60 @@ export const roadmap = [
     description: "Share and organize state across your application.",
     status: "locked",
     lessons: [
-      { id: "context-api", title: "Context API", status: "locked" },
-      { id: "global-state", title: "Global State Patterns", status: "locked" },
+      {
+  id: "context-api",
+  title: "Context API",
+  status: "locked",
+  duration: "35 minutes",
+  summary:
+    "Learn how to share data between components without passing props through every level.",
+  reason:
+    "Context is useful for app-wide information such as a logged-in user, theme, or learning progress.",
+  steps: [
+    {
+      title: "Create a context",
+      description:
+        "Use createContext to make a shared place for application data.",
+    },
+    {
+      title: "Provide a value",
+      description:
+        "Wrap the components that need the data with a context provider.",
+    },
+    {
+      title: "Read the shared value",
+      description:
+        "Use useContext inside a child component to access the provided data.",
+    },
+  ],
+},
+    {
+  id: "global-state",
+  title: "Global State Patterns",
+  status: "locked",
+  duration: "30 minutes",
+  summary:
+    "Learn when shared state is useful and how to keep it organized.",
+  reason:
+    "Good state structure keeps larger React applications predictable and easier to maintain.",
+  steps: [
+    {
+      title: "Identify shared state",
+      description:
+        "Separate data needed by one component from data needed across the app.",
+    },
+    {
+      title: "Choose the right location",
+      description:
+        "Keep local state close to the component and lift only truly shared state upward.",
+    },
+    {
+      title: "Avoid unnecessary global state",
+      description:
+        "Use global state only when multiple parts of the app need the same data.",
+    },
+  ],
+  },
     ],
   }
 ];

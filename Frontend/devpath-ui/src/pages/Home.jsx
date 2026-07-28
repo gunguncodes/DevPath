@@ -3,15 +3,17 @@ import MissionCard from "../components/home/MissionCard";
 import ProgressCard from "../components/home/ProgressCard";
 import NextMilestone from "../components/home/NextMilestone";
 import MainLayout from "../layouts/MainLayout";
+import { getLearningStats } from "../utils/learningStats";
 
-function Home({roadmap}) {
-  const currentMilestone = roadmap.find(
-    (milestone) => milestone.status === "current"
-  );
-
-  const currentLesson = currentMilestone?.lessons.find(
-    (lesson) => lesson.status === "current"
-  );
+function Home({ roadmap }) {
+  const {
+    completedLessons,
+    totalLessons,
+    percentage,
+    currentMilestone,
+    currentLesson,
+    nextMilestone,
+  } = getLearningStats(roadmap);
 
   return (
     <MainLayout>
@@ -27,13 +29,16 @@ function Home({roadmap}) {
           )}
         </div>
 
-        <div>
-          <ProgressCard />
-        </div>
+        <ProgressCard
+          currentMilestone={currentMilestone}
+          completedLessons={completedLessons}
+          totalLessons={totalLessons}
+          percentage={percentage}
+        />
       </section>
 
       <section className="mt-6">
-        <NextMilestone />
+        <NextMilestone milestone={nextMilestone} />
       </section>
     </MainLayout>
   );
