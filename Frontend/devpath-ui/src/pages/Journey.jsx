@@ -1,6 +1,7 @@
 import JourneyModule from "../components/journey/JourneyModule";
 import MainLayout from "../layouts/MainLayout";
 import { roadmap } from "../data/roadmap";
+import { getLearningStats } from "../utils/learningStats";
 
 function getJourneyProgress(milestones) {
   let totalLessons = 0;
@@ -24,15 +25,13 @@ function getJourneyProgress(milestones) {
 }
 
 export default function Journey({roadmap}) {
-  const progress = getJourneyProgress(roadmap);
-
-  const currentMilestone = roadmap.find(
-    (milestone) => milestone.status === "current"
-  );
-
-  const currentLesson = currentMilestone?.lessons.find(
-    (lesson) => lesson.status === "current"
-  );
+const {
+  completedLessons,
+  totalLessons,
+  percentage,
+  currentMilestone,
+  currentLesson,
+} = getLearningStats(roadmap);
 
   return (
     <MainLayout>
@@ -61,22 +60,22 @@ export default function Journey({roadmap}) {
                 </p>
 
                 <p className="mt-1 text-2xl font-bold text-slate-900">
-                  {progress.percentage}% complete
+                  {percentage}% complete
                 </p>
               </div>
 
               <p className="text-sm font-medium text-slate-600">
-                {progress.completedLessons} of {progress.totalLessons} lessons
+                {completedLessons} of {totalLessons} lessons
               </p>
             </div>
 
             <div
               className="mt-4 h-2 overflow-hidden rounded-full bg-slate-100"
-              aria-label={`${progress.percentage}% of lessons completed`}
+              aria-label={`${percentage}% of lessons completed`}
             >
               <div
                 className="h-full rounded-full bg-indigo-600"
-                style={{ width: `${progress.percentage}%` }}
+                style={{ width: `${percentage}%` }}
               />
             </div>
 
