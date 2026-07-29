@@ -1,3 +1,5 @@
+import { useState } from "react";
+import ConfirmDialog from "../components/common/ConfirmDialog";
 import { FiBookOpen, FiRotateCcw, FiTarget } from "react-icons/fi";
 import Button from "../components/common/Button";
 import ProfileStat from "../components/profile/ProfileStat";
@@ -17,14 +19,11 @@ function Profile({ roadmap, onResetProgress }) {
     (milestone) => milestone.status === "completed"
   ).length;
 
-  function handleReset() {
-    const shouldReset = window.confirm(
-      "Reset all learning progress? This cannot be undone."
-    );
+  const[isResetDialogOpen, setIsResetDialogOpen] = useState(false);
 
-    if (shouldReset) {
-      onResetProgress();
-    }
+  function handleReset() {
+    onResetProgress();
+    setIsResetDialogOpen(false);
   }
 
   return (
@@ -99,7 +98,7 @@ function Profile({ roadmap, onResetProgress }) {
           </p>
 
           <div className="mt-5 max-w-xs">
-            <Button onClick={handleReset}>
+            <Button onClick={()=> setIsResetDialogOpen(true)}>
               <span className="flex items-center justify-center gap-2">
                 <FiRotateCcw size={17} />
                 Reset progress
@@ -108,6 +107,14 @@ function Profile({ roadmap, onResetProgress }) {
           </div>
         </section>
       </div>
+      <ConfirmDialog
+        isOpen={isResetDialogOpen}
+        title="Reset all learning progress?"
+        description={"This will return you to the first active lesson and cannot be undone."}
+        confirmLabel="Reset Progress"
+        onCancel={()=> setIsResetDialogOpen(false)}
+        onConfirm={handleReset}
+        />
     </MainLayout>
   );
 }
