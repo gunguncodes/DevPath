@@ -52,9 +52,7 @@ function App() {
         />
 
         <Route path="/roadmap" element={<Roadmap roadmap={learningPath} />} />
-        <Route path="/profile" element={<Profile roadmap={learningPath} onResetProgress={handleResetProgress} />
-  }
-/>
+        <Route path="/profile" element={<Profile roadmap={learningPath} onResetProgress={handleResetProgress} />} />
       </Routes>
     </BrowserRouter>
   );
