@@ -7,6 +7,7 @@ import Roadmap from "./pages/Roadmap";
 import Profile from "./pages/Profile";
 import { roadmap } from "./data/roadmap";
 import { completeLesson } from "./utils/learningProgress";
+import Landing from "./pages/Landing";
 import {
   loadLearningPath,
   saveLearningPath,
@@ -34,7 +35,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home roadmap={learningPath} />} />
+        <Route path="/" element={<Landing/>} />
+        <Route path="/app" element={<Home roadmap={learningPath}/>}/>
 
         <Route
           path="/journey"

@@ -11,7 +11,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const links = [
     {
       name: "Today",
-      path: "/",
+      path: "/app",
       icon: <FiHome size={20} />,
     },
     {
