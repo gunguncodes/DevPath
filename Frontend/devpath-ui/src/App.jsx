@@ -8,6 +8,8 @@ import Profile from "./pages/Profile";
 import { roadmap } from "./data/roadmap";
 import { completeLesson } from "./utils/learningProgress";
 import Landing from "./pages/Landing";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import {
   loadLearningPath,
   saveLearningPath,
@@ -55,6 +57,8 @@ function App() {
 
         <Route path="/roadmap" element={<Roadmap roadmap={learningPath} />} />
         <Route path="/profile" element={<Profile roadmap={learningPath} onResetProgress={handleResetProgress} />} />
+        <Route path="/sign-in" element={<SignIn />}/>
+        <Route path="/sign-up" element={<SignUp />}/>
       </Routes>
     </BrowserRouter>
   );

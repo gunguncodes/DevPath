@@ -18,12 +18,21 @@ function PublicNavbar() {
           </a>
         </div>
 
-        <Link
-          to="/app"
-          className="rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800"
-        >
-          Open demo
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link
+            to="/sign-in"
+            className="text-sm font-semibold text-slate-700 hover:text-slate-900"
+          >
+            Sign in
+          </Link>
+
+          <Link
+            to="/sign-up"
+            className="rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800"
+          >
+            Get started
+          </Link>
+        </div>
       </nav>
     </header>
   );
