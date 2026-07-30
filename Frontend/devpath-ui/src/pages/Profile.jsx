@@ -7,7 +7,7 @@ import Card from "../components/common/Card";
 import MainLayout from "../layouts/MainLayout";
 import { getLearningStats } from "../utils/learningStats";
 
-function Profile({ roadmap, onResetProgress }) {
+function Profile({ roadmap,studentProfile, onResetProgress }) {
   const {
     completedLessons,
     totalLessons,
@@ -31,7 +31,7 @@ function Profile({ roadmap, onResetProgress }) {
       <div className="mx-auto max-w-4xl pb-10">
         <header className="flex flex-col gap-5 border-b border-slate-200 pb-8 sm:flex-row sm:items-center">
           <div className="flex h-18 w-18 items-center justify-center rounded-2xl bg-indigo-600 text-2xl font-bold text-white">
-            G
+            {studentProfile.displayName.charAt(0).toUpperCase()}
           </div>
 
           <div>
@@ -40,11 +40,11 @@ function Profile({ roadmap, onResetProgress }) {
             </p>
 
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
-              Gungun
+              {studentProfile.displayName}
             </h1>
 
             <p className="mt-2 text-slate-600">
-              Building a frontend development foundation.
+              {studentProfile.learningGoal}
             </p>
           </div>
         </header>

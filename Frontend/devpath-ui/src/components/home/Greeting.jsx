@@ -1,9 +1,9 @@
-function Greeting() {
+function Greeting({displayName}) {
   return (
     <section className="mb-14">
 
       <p className="text-sm font-semibold uppercase tracking-widest text-indigo-600">
-        Welcome back, Gungun
+        Welcome back, {displayName}
       </p>
 
       <h1 className="mt-3 text-4xl font-bold text-slate-900 leading-tight">

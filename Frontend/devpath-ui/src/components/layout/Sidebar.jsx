@@ -5,6 +5,7 @@ import {
   FiMap,
   FiTarget,
   FiUser,
+  FiSettings,
 } from "react-icons/fi";
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
@@ -28,6 +29,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       name: "Profile",
       path: "/profile",
       icon: <FiUser size={20} />,
+    },
+    {
+      name: "Settings",
+      path: "/settings",
+      icon: <FiSettings size={20}/>,
     },
   ];
 

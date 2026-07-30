@@ -14,15 +14,29 @@ import {
   loadLearningPath,
   saveLearningPath,
 } from "./utils/learningPathStorage";
+import { defaultStudentProfile } from "./data/studentProfile";
+import {
+  loadStudentProfile,
+  saveStudentProfile,
+} from "./utils/studentProfileStorage";
+import Settings from "./pages/Settings";
 
 function App() {
   const [learningPath, setLearningPath] = useState(() =>
     loadLearningPath(roadmap)
   );
 
+  const [studentProfile, setStudentProfile] = useState(() =>
+  loadStudentProfile(defaultStudentProfile)
+);
+
   useEffect(() => {
     saveLearningPath(learningPath);
   }, [learningPath]);
+
+  useEffect(()=> {
+    saveStudentProfile(studentProfile);
+  }, [studentProfile]);
 
   function handleLessonComplete(lessonId) {
     setLearningPath((currentPath) =>
@@ -34,11 +48,23 @@ function App() {
     setLearningPath(roadmap);
   }
 
+  function handleStudentProfileSave(updatedProfile) {
+    setStudentProfile(updatedProfile);
+  }
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing/>} />
-        <Route path="/app" element={<Home roadmap={learningPath}/>}/>
+        <Route 
+          path="/app" 
+          element={
+            <Home 
+              roadmap={learningPath}
+              studentProfile={studentProfile}
+            />
+          }
+        />
 
         <Route
           path="/journey"
@@ -56,9 +82,25 @@ function App() {
         />
 
         <Route path="/roadmap" element={<Roadmap roadmap={learningPath} />} />
-        <Route path="/profile" element={<Profile roadmap={learningPath} onResetProgress={handleResetProgress} />} />
+        <Route path="/profile" element={
+          <Profile 
+            roadmap={learningPath}
+            studentProfile={studentProfile}
+            onResetProgress={handleResetProgress}
+          />
+          } 
+        />
         <Route path="/sign-in" element={<SignIn />}/>
         <Route path="/sign-up" element={<SignUp />}/>
+        <Route
+          path="/settings"
+          element={
+            <Settings
+              studentProfile={studentProfile}
+              onSave={handleStudentProfileSave}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

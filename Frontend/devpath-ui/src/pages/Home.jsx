@@ -5,7 +5,7 @@ import NextMilestone from "../components/home/NextMilestone";
 import MainLayout from "../layouts/MainLayout";
 import { getLearningStats } from "../utils/learningStats";
 
-function Home({ roadmap }) {
+function Home({ roadmap, studentProfile }) {
   const {
     completedLessons,
     totalLessons,
@@ -17,7 +17,7 @@ function Home({ roadmap }) {
 
   return (
     <MainLayout>
-      <Greeting />
+      <Greeting displayName={studentProfile.displayName} />
 
       <section className="mt-10 grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2">
