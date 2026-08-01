@@ -65,14 +65,21 @@ function Onboarding({ curriculum, onComplete }) {
             </div>
 
             <div className="mt-6 space-y-3">
-              {curriculum.map((module) => {
+              {curriculum.map((module,index) => {
+                const previousModule = curriculum[index - 1];
+                const canSelectedModule = 
+                   index === 0 || completedModuleIds.includes(previousModule.id);
                 const isSelected = completedModuleIds.includes(module.id);
 
                 return (
                   <label
                     key={module.id}
-                    className={`flex cursor-pointer items-start gap-4 rounded-xl border p-4 transition ${
-                      isSelected
+                    className={`flex items-start gap-4 rounded-xl border p-4 transition ${
+                        canSelectedModule
+                        ? "cursor-pointer"
+                        : "cursor-not-allowed opacity-50"
+                    } ${
+                        isSelected
                         ? "border-indigo-300 bg-indigo-50"
                         : "border-slate-200 hover:border-slate-300"
                     }`}
@@ -80,6 +87,7 @@ function Onboarding({ curriculum, onComplete }) {
                     <input
                       type="checkbox"
                       checked={isSelected}
+                      disabled={!canSelectedModule}
                       onChange={() => toggleModule(module.id)}
                       className="mt-1 h-4 w-4 accent-indigo-600"
                     />

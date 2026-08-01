@@ -66,6 +66,11 @@ function App() {
   }
 
   function handleStudentProfileSave(updatedProfile) {
+    setStudentProfile((currentProfile) => ({
+      ...currentProfile,
+      ...updatedProfile,
+    }));
+    
     setStudentProfile(updatedProfile);
   }
 

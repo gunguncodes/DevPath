@@ -6,7 +6,7 @@ function SignUp() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    navigate("onboarding");
+    navigate("/onboarding");
   }
 
   return (
