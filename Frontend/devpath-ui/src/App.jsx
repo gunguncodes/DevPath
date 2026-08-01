@@ -20,6 +20,8 @@ import {
   saveStudentProfile,
 } from "./utils/studentProfileStorage";
 import Settings from "./pages/Settings";
+import Onboarding from "./pages/Onboarding";
+import { generateRoadmap } from "./utils/generateRoadmap";
 
 function App() {
   const [learningPath, setLearningPath] = useState(() =>
@@ -45,7 +47,22 @@ function App() {
   }
 
   function handleResetProgress() {
-    setLearningPath(roadmap);
+    const completedModuleIds = studentProfile.completedModuleIds ?? [];
+    const resetRoadmap = generateRoadmap(roadmap, completedModuleIds);
+
+    setLearningPath(resetRoadmap);
+  }
+
+  function handleOnboardingComplete(completedModuleIds) {
+    const personalizedRoadmap = generateRoadmap(roadmap, completedModuleIds);
+
+    setStudentProfile((currentProfile) => ({
+      ...currentProfile,
+      completedModuleIds,
+      careerGoal: "frontend-developer",
+    }));
+
+    setLearningPath(personalizedRoadmap);
   }
 
   function handleStudentProfileSave(updatedProfile) {
@@ -98,6 +115,15 @@ function App() {
             <Settings
               studentProfile={studentProfile}
               onSave={handleStudentProfileSave}
+            />
+          }
+        />
+        <Route
+          path="/onboarding"
+          element={
+            <Onboarding
+            curriculum={roadmap}
+            onComplete={handleOnboardingComplete}
             />
           }
         />
