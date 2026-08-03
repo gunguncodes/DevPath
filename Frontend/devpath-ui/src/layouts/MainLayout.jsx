@@ -18,7 +18,7 @@ function MainLayout({ children }) {
         />
       )}
 
-      <main className="flex-1 min-w-0 pt-24 px-10">
+      <main className="flex-1 min-w-0 pt-10 px-10">
         {children}
       </main>
     </div>

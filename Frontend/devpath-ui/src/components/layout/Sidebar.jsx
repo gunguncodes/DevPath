@@ -127,8 +127,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
           <div>
 
-            <h1 className="text-2xl font-bold text-indigo-600">
-              DevPath
+            <h1 className="text-2xl font-bold tracking-tight">
+              <span className="text-indigo-600">Dev</span>
+              <span className="text-slate-900">Path</span>
             </h1>
 
             <p className="text-sm text-slate-500">
