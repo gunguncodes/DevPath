@@ -22,6 +22,7 @@ import {
 import Settings from "./pages/Settings";
 import Onboarding from "./pages/Onboarding";
 import { generateRoadmap } from "./utils/generateRoadmap";
+import { careerPaths, careerPathOptions } from "./data/careerPaths";
 
 function App() {
   const [learningPath, setLearningPath] = useState(() =>
@@ -47,19 +48,31 @@ function App() {
   }
 
   function handleResetProgress() {
-    const completedModuleIds = studentProfile.completedModuleIds ?? [];
-    const resetRoadmap = generateRoadmap(roadmap, completedModuleIds);
+    const selectedCareerPath = 
+      careerPaths[studentProfile.careerGoal] ??
+      careerPaths["frontend-developer"];
+    
+    const resetRoadmap = generateRoadmap(
+      selectedCareerPath.curriculum,
+      studentProfile.completedModuleIds ?? []
+    );  
 
     setLearningPath(resetRoadmap);
   }
 
-  function handleOnboardingComplete(completedModuleIds) {
-    const personalizedRoadmap = generateRoadmap(roadmap, completedModuleIds);
+  function handleOnboardingComplete(careerGoal, completedModuleIds) {
+    const selectedCareerPath = careerPaths[careerGoal];
+
+    const personalizedRoadmap = generateRoadmap(
+      selectedCareerPath.curriculum,
+      completedModuleIds
+    );
 
     setStudentProfile((currentProfile) => ({
       ...currentProfile,
+      careerGoal,
       completedModuleIds,
-      careerGoal: "frontend-developer",
+      learningGoal : selectedCareerPath.description,
     }));
 
     setLearningPath(personalizedRoadmap);
@@ -127,7 +140,7 @@ function App() {
           path="/onboarding"
           element={
             <Onboarding
-            curriculum={roadmap}
+            careerPathOptions={careerPathOptions}
             onComplete={handleOnboardingComplete}
             />
           }
