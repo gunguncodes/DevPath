@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "../components/common/Button";
 import Card from "../components/common/Card";
 import MainLayout from "../layouts/MainLayout";
+import { useNavigate } from "react-router-dom";
 
 function Settings({ studentProfile, onSave }) {
   const [displayName, setDisplayName] = useState(
@@ -11,6 +12,12 @@ function Settings({ studentProfile, onSave }) {
     studentProfile.learningGoal
   );
   const [isSaved, setIsSaved] = useState(false);
+
+  const navigate = useNavigate();
+
+  function handleRebuildLearningPath() {
+    navigate("/onboarding");
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -95,7 +102,30 @@ function Settings({ studentProfile, onSave }) {
             )}
           </form>
         </Card>
-      </div>
+
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+        <p className="text-sm font-semibold uppercase tracking-widest text-indigo-600">
+          Learning path
+        </p>
+
+        <h2 className="mt-3 text-xl font-bold text-slate-900">
+          Rebuild your learning path
+        </h2>
+
+        <p className="mt-2 max-w-xl leading-7 text-slate-600">
+          Change your career goal or update the skills you already know. Your new
+          answers will create a fresh roadmap.
+        </p>
+
+        <button
+        type="button"
+        onClick={handleRebuildLearningPath}
+        className="mt-5 rounded-xl border border-slate-300 px-5 py-3 font-semibold text-slate-800 transition hover:border-slate-400 hover:bg-slate-50"
+        >
+          Update my learning path
+        </button>
+      </section>
+    </div>  
     </MainLayout>
   );
 }
